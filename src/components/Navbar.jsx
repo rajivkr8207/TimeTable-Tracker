@@ -2,14 +2,11 @@ import { useState } from "react";
 import { FaTasks } from "react-icons/fa";
 import { useTheme } from "../context/ThemeContext";
 import { FaSun, FaMoon } from "react-icons/fa";
+import { useTracker } from "../context/TrackerContext";
 const Navbar = () => {
-  const [isActive, SetISActive] = useState("daily");
   const { theme, handleTheme } = useTheme();
-  const allnames = ["daily", "weekly", "monthly"];
+  const { allnames, isActive, handlechangeActive } = useTracker();
 
-  const handlechangeActive = (item) => {
-    SetISActive(item);
-  };
   return (
     <>
       <div className="mx-auto container text-black relative dark:text-white flex  justify-between items-center border border-black dark:border-white  lg:px-5 px-1 py-2">
@@ -26,7 +23,7 @@ const Navbar = () => {
           <ul
             className={`md:flex hidden    md:flex-row flex-col  items-center gap-2 text-xl bg-gray-200 dark:bg-gray-800 px-3 py-2 rounded-2xl`}
           >
-            {allnames.map((item, index) => {
+            {allnames?.map((item, index) => {
               return (
                 <li
                   key={index}

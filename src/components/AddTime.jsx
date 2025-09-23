@@ -1,18 +1,21 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useTracker } from "../context/TrackerContext";
+import { toast } from "react-toastify";
 
 const AddTime = () => {
   const {
     register,
     handleSubmit,
-    watch,
+    watch,reset,
     formState: { errors },
   } = useForm();
   const { categoryoption, handleSubmitTask } = useTracker();
 
   const onSubmit = (item) => {
     handleSubmitTask(item)
+    toast.success('Add Task Successfully')
+    reset()
   };
   return (
     <form
