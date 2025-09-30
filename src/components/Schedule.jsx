@@ -8,7 +8,7 @@ const Schedule = () => {
     handleSubmitTask,
     categoryoption,
     handledelete,
-    clearall,
+    clearall,handlecheckbox
   } = useTracker();
   const [filname, setFilname] = useState("all");
   const [filteredSchedule, setFilteredSchedule] = useState([]);
@@ -27,6 +27,10 @@ const Schedule = () => {
   }, [filname, allschedule]);
 
   const dynamicdate = new Date().toLocaleDateString();
+
+  const handleComplete = (taskId) => {
+    handlecheckbox(taskId);
+  }
 
   return (
     <div className="lg:w-[68%] w-full min-h-[30rem] h-auto bg-white dark:bg-black border border-gray-300 rounded-2xl p-6">
@@ -78,6 +82,8 @@ const Schedule = () => {
                   <div className="flex items-center gap-4">
                     <input 
                       type="checkbox" 
+                      checked={item.complete}
+                      onChange={() => handleComplete(item.id)}
                       className="w-5 h-5 cursor-pointer" 
                     />
                     <div>

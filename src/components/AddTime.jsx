@@ -48,7 +48,7 @@ const AddTime = () => {
             type="time"
             name="end"
             id="end"
-            defaultValue="01:00"
+            defaultValue="13:00"
             {...register("end", { required: true })}
             className="border border-black dark:border-white  rounded-md px-1 py-1  bg-black text-white dark:bg-white dark:text-black"
           />
